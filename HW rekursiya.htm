@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+    <html lang="en" >
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+        //    Написать функцию возведения числа в степень.
+
+            function task1(x, n){
+                if( n == 1 ) {
+                    return x;
+                }
+                else { 
+                    return x * task1( x, n-1 );
+                }
+            }
+
+            alert(task1(2, 4));
+
+            function task2( a, b){
+                if( b == 0 ){
+                    return a;
+                }
+                else {
+                    return task2( b, a % b);
+                }
+            }
+
+            alert(task2( 10, 20));
+
+            function task3( a, b = 1 ){
+                if(a != 0){
+                    if(b < a % 10){
+                        b = a % 10; 
+                        a /= 10;
+                        return task3(a, b)
+                    }
+                    else{
+                        a /= 10
+                        return task3(a, b)
+                    }
+                }    
+                return Math.trunc(b)
+            }
+            alert(task3(5485201));
+
+
+            function task4( c, i = 2, l = 0 ){
+                if( i * i <= c && l != 1 ){
+                    return task4( c, i += 1, +(c % i == 0) );
+                }
+                else return (l == 1) ;
+            }
+            alert(task4(12));
+
+            function task6(s){
+                return s <= 2 ? 1 : task6(s-1) + task6(s-2); 
+            }
+
+            alert(task6(3));
+        </script>
+
+    </body>
+</html>
